@@ -5,7 +5,7 @@ metadata:
   labels:
     monokle.io/demo: vanilla-blue-cms
 spec:
-  replicas: "this-should-be-a-number"
+  replicas: 1
   selector:
     matchLabels:
       app: blue-cms
@@ -17,6 +17,9 @@ spec:
       containers:
         - name: blue-cms
           image: blue-cms:latest
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
           ports:
             - name: http-web
               containerPort: 8080
