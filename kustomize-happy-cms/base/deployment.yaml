@@ -20,3 +20,10 @@ spec:
           ports:
             - name: http-web
               containerPort: 8080
+          securityContext:
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+            runAsUser: 10001
+            runAsGroup: 10001
